@@ -1,0 +1,70 @@
+@{ ViewData["Title"] = "Member Dashboard"; }
+
+<section class="dashboard-section">
+    <div class="container">
+        <div class="dashboard-header">
+            <div>
+                <h1 class="dashboard-title"><i class="bi bi-speedometer2 me-2"></i>My Dashboard</h1>
+                <p class="dashboard-subtitle">Welcome, <strong>@ViewBag.UserName</strong>! Explore your library.</p>
+            </div>
+            <span class="role-badge role-member"><i class="bi bi-person-badge me-1"></i>Member</span>
+        </div>
+
+        <!-- Member Info Card -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="stat-card stat-card-primary">
+                    <div class="stat-card-icon"><i class="bi bi-person-circle"></i></div>
+                    <div class="stat-card-info">
+                        <div class="stat-card-number" style="font-size:1.3rem;">@ViewBag.UserName</div>
+                        <div class="stat-card-label">@ViewBag.UserEmail</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="stat-card stat-card-success">
+                    <div class="stat-card-icon"><i class="bi bi-book"></i></div>
+                    <div class="stat-card-info">
+                        <div class="stat-card-number">0</div>
+                        <div class="stat-card-label">Books Borrowed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Available Actions -->
+        <h2 class="section-title mb-4"><i class="bi bi-grid me-2"></i>Library Services</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="action-card">
+                    <div class="action-icon"><i class="bi bi-search"></i></div>
+                    <h3>Browse Books</h3>
+                    <p>Search and explore our entire book catalog.</p>
+                    <button class="btn btn-outline-secondary btn-sm" disabled>
+                        <i class="bi bi-clock me-1"></i>Coming Soon
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="action-card">
+                    <div class="action-icon icon-blue"><i class="bi bi-journal-check"></i></div>
+                    <h3>My Borrows</h3>
+                    <p>View your current and past borrowing history.</p>
+                    <button class="btn btn-outline-secondary btn-sm" disabled>
+                        <i class="bi bi-clock me-1"></i>Coming Soon
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="action-card">
+                    <div class="action-icon icon-green"><i class="bi bi-arrow-return-left"></i></div>
+                    <h3>Return Books</h3>
+                    <p>Return borrowed books and manage due dates.</p>
+                    <button class="btn btn-outline-secondary btn-sm" disabled>
+                        <i class="bi bi-clock me-1"></i>Coming Soon
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

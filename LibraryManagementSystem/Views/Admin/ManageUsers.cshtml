@@ -1,0 +1,51 @@
+@model IEnumerable<LibraryManagementSystem.Models.User>
+@{ ViewData["Title"] = "Manage Users"; }
+
+<section class="dashboard-section">
+    <div class="container">
+        <div class="dashboard-header">
+            <div>
+                <h1 class="dashboard-title"><i class="bi bi-people me-2"></i>Manage Users</h1>
+                <p class="dashboard-subtitle">View all registered users in the library system.</p>
+            </div>
+            <a asp-action="Index" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-custom">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Registered On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.UserId</td>
+                            <td><i class="bi bi-person-circle me-1"></i>@user.Name</td>
+                            <td>@user.Email</td>
+                            <td>
+                                @if (user.Role == "Admin")
+                                {
+                                    <span class="badge bg-danger"><i class="bi bi-shield-check me-1"></i>Admin</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-primary"><i class="bi bi-person me-1"></i>Member</span>
+                                }
+                            </td>
+                            <td>@user.CreatedAt.ToString("MMM dd, yyyy")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
