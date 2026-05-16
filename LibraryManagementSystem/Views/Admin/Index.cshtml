@@ -1,0 +1,79 @@
+@{ ViewData["Title"] = "Admin Dashboard"; }
+
+<section class="dashboard-section">
+    <div class="container">
+        <div class="dashboard-header">
+            <div>
+                <h1 class="dashboard-title"><i class="bi bi-speedometer2 me-2"></i>Admin Dashboard</h1>
+                <p class="dashboard-subtitle">Welcome back, <strong>@ViewBag.UserName</strong>! Manage your library system.</p>
+            </div>
+            <span class="role-badge role-admin"><i class="bi bi-shield-check me-1"></i>Administrator</span>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="stat-card stat-card-primary">
+                    <div class="stat-card-icon"><i class="bi bi-people-fill"></i></div>
+                    <div class="stat-card-info">
+                        <div class="stat-card-number">@ViewBag.TotalUsers</div>
+                        <div class="stat-card-label">Total Users</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card stat-card-success">
+                    <div class="stat-card-icon"><i class="bi bi-person-check-fill"></i></div>
+                    <div class="stat-card-info">
+                        <div class="stat-card-number">@ViewBag.TotalMembers</div>
+                        <div class="stat-card-label">Members</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card stat-card-warning">
+                    <div class="stat-card-icon"><i class="bi bi-shield-fill-check"></i></div>
+                    <div class="stat-card-info">
+                        <div class="stat-card-number">@ViewBag.TotalAdmins</div>
+                        <div class="stat-card-label">Admins</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <h2 class="section-title mb-4"><i class="bi bi-lightning-charge me-2"></i>Quick Actions</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="action-card">
+                    <div class="action-icon"><i class="bi bi-people"></i></div>
+                    <h3>Manage Users</h3>
+                    <p>View and manage all registered library members.</p>
+                    <a asp-action="ManageUsers" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-arrow-right me-1"></i>View Users
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="action-card">
+                    <div class="action-icon icon-blue"><i class="bi bi-book"></i></div>
+                    <h3>Manage Books</h3>
+                    <p>Add, edit, or remove books from the catalog.</p>
+                    <button class="btn btn-outline-secondary btn-sm" disabled>
+                        <i class="bi bi-clock me-1"></i>Coming Soon
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="action-card">
+                    <div class="action-icon icon-green"><i class="bi bi-graph-up"></i></div>
+                    <h3>Reports</h3>
+                    <p>Generate library usage and activity reports.</p>
+                    <button class="btn btn-outline-secondary btn-sm" disabled>
+                        <i class="bi bi-clock me-1"></i>Coming Soon
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

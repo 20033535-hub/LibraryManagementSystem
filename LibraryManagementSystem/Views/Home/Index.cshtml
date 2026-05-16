@@ -1,86 +1,206 @@
-﻿@{
-    ViewBag.Title = "Home";
+@* =============================================================================
+    Index.cshtml - Home Page
+    Library Management System
+    =============================================================================
+    The main landing page showcasing the library system.
+    Features a hero section, feature cards, and statistics.
+    ============================================================================= *@
+
+@{
+    ViewData["Title"] = "Welcome";
 }
 
+<!-- ===================================================================== -->
+<!-- HERO SECTION -->
+<!-- ===================================================================== -->
 <section class="hero-section">
-    <h1>Library Management System</h1>
-
-    <p>
-        Welcome to our online Library Management System. This platform allows library members
-        to browse books, borrow books, reserve books, and manage their reading activities.
-        Library administrators can manage books, borrowing records, feedback, and library reports.
-    </p>
-
-    <div class="hero-buttons">
-        @Html.ActionLink("View Books", "Index", "Books", null, new { @class = "btn-primary" })
-        @Html.ActionLink("Borrow Book", "Index", "Borrow", null, new { @class = "btn-secondary" })
-        @Html.ActionLink("Give Feedback", "Index", "Feedback", null, new { @class = "btn-secondary" })
-        @Html.ActionLink("Login", "Login", "Account", null, new { @class = "btn-primary" })
+    <div class="hero-overlay"></div>
+    <div class="container position-relative">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-7">
+                <div class="hero-content">
+                    <span class="hero-badge">
+                        <i class="bi bi-stars me-1"></i>Digital Library Platform
+                    </span>
+                    <h1 class="hero-title">
+                        Your Gateway to
+                        <span class="gradient-text">Knowledge</span>
+                    </h1>
+                    <p class="hero-description">
+                        Discover, borrow, and manage your reading journey with our modern
+                        Library Management System. Access thousands of books, track your
+                        borrowing history, and explore new horizons.
+                    </p>
+                    <div class="hero-actions">
+                        @if (Context.Session.GetString("UserId") == null)
+                        {
+                            <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg hero-btn">
+                                <i class="bi bi-person-plus me-2"></i>Join Now
+                            </a>
+                            <a asp-controller="Account" asp-action="Login" class="btn btn-outline-light btn-lg hero-btn-outline">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Account" asp-action="RedirectToDashboard" class="btn btn-primary btn-lg hero-btn">
+                                <i class="bi bi-speedometer2 me-2"></i>Go to Dashboard
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <div class="hero-illustration">
+                    <div class="floating-card card-1">
+                        <i class="bi bi-book"></i>
+                        <span>10,000+ Books</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="bi bi-people"></i>
+                        <span>Active Members</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="bi bi-shield-check"></i>
+                        <span>Secure System</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<section class="group-section">
-    <h2>Group Details</h2>
+<!-- ===================================================================== -->
+<!-- FEATURES SECTION -->
+<!-- ===================================================================== -->
+<section class="features-section" id="features">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-badge">Features</span>
+            <h2 class="section-title">Everything You Need</h2>
+            <p class="section-subtitle">
+                A comprehensive solution for modern library management
+            </p>
+        </div>
 
-    <table class="group-table">
-        <thead>
-            <tr>
-                <th>Student ID</th>
-                <th>Student Full Name</th>
-            </tr>
-        </thead>
+        <div class="row g-4">
+            <!-- Feature 1: Book Management -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-collection"></i>
+                    </div>
+                    <h3>Book Catalog</h3>
+                    <p>Browse through our extensive collection of books organized by categories, authors, and genres.</p>
+                </div>
+            </div>
 
-        <tbody>
-            <tr>
-                <td>20033535</td>
-                <td>Karan Kumar Shah</td>
-            </tr>
+            <!-- Feature 2: Easy Borrowing -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-icon icon-blue">
+                        <i class="bi bi-arrow-left-right"></i>
+                    </div>
+                    <h3>Easy Borrowing</h3>
+                    <p>Borrow and return books seamlessly with our streamlined checkout process and due date tracking.</p>
+                </div>
+            </div>
 
-            <tr>
-                <td>20032376</td>
-                <td>Mr Sachin GURUNG</td>
-            </tr>
+            <!-- Feature 3: Member Portal -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-icon icon-green">
+                        <i class="bi bi-person-badge"></i>
+                    </div>
+                    <h3>Member Portal</h3>
+                    <p>Access your personal dashboard to view borrowing history, manage returns, and track due dates.</p>
+                </div>
+            </div>
 
-            <tr>
-                <td>20033374</td>
-                <td>Mr Sanjiv KARKI</td>
-            </tr>
+            <!-- Feature 4: Admin Tools -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-icon icon-purple">
+                        <i class="bi bi-gear"></i>
+                    </div>
+                    <h3>Admin Dashboard</h3>
+                    <p>Powerful administration tools for managing users, books, and monitoring library operations.</p>
+                </div>
+            </div>
 
-            <tr>
-                <td>20028707</td>
-                <td>Miss Anju SIWA</td>
-            </tr>
+            <!-- Feature 5: Search -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-icon icon-orange">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    <h3>Smart Search</h3>
+                    <p>Find any book instantly with our advanced search by title, author, ISBN, or category.</p>
+                </div>
+            </div>
 
-            <tr>
-                <td>20031483</td>
-                <td>Mr Riyan MAHARJAN</td>
-            </tr>
-        </tbody>
-    </table>
+            <!-- Feature 6: Reports -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-icon icon-red">
+                        <i class="bi bi-graph-up"></i>
+                    </div>
+                    <h3>Reports & Analytics</h3>
+                    <p>Generate comprehensive reports on library usage, popular books, and member activity.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section class="features-section">
-    <h2>Library Features</h2>
-
-    <div class="feature-grid">
-        <div class="feature-card">
-            <h3>Available Books</h3>
-            <p>Members can browse available books with title, author, genre, ISBN and availability status.</p>
+<!-- ===================================================================== -->
+<!-- STATS SECTION -->
+<!-- ===================================================================== -->
+<section class="stats-section">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-6 col-md-3">
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Books Available</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Active Members</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Online Access</div>
+                </div>
+            </div>
         </div>
+    </div>
+</section>
 
-        <div class="feature-card">
-            <h3>Most Borrowed Books</h3>
-            <p>The system can display popular books based on borrowing records.</p>
-        </div>
-
-        <div class="feature-card">
-            <h3>New Arrivals</h3>
-            <p>Newly added books can be shown on the homepage for members.</p>
-        </div>
-
-        <div class="feature-card">
-            <h3>Library Services</h3>
-            <p>Users can access borrowing, reservations, feedback, login and registration services.</p>
-        </div>
+<!-- ===================================================================== -->
+<!-- CTA SECTION -->
+<!-- ===================================================================== -->
+<section class="cta-section">
+    <div class="container text-center">
+        <h2 class="cta-title">Ready to Start Reading?</h2>
+        <p class="cta-description">
+            Join our library community today and unlock access to thousands of books.
+        </p>
+        @if (Context.Session.GetString("UserId") == null)
+        {
+            <a asp-controller="Account" asp-action="Register" class="btn btn-light btn-lg cta-btn">
+                <i class="bi bi-rocket-takeoff me-2"></i>Get Started Free
+            </a>
+        }
     </div>
 </section>
